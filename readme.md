@@ -1,5 +1,8 @@
 ### MONSTERKILLER
 
+![alt text](assets/images/monsterkiller.png)
+
+
 ## URL https://zealous-bell-fec4be.netlify.app/
 
 Basic ES6 game to practice core JS syntax. To play the game just choose the health level you would like to have. You will share this amount with the monster. You can also heal but only after taking a certain amount of damage. To win the game you just need to finish his health bar. You do not need to choose a health amount; 100 HP will be assigned to you by default.
