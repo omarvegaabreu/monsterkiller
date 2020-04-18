@@ -14,9 +14,11 @@ const LOG_EVENT_GAME_OVER = "GAME_OVER";
 let battleLog = [];
 let lastLoggedEntry;
 
+//set value for max life
 const getMaxLifeValues = () => {
   const enteredValue = prompt("Choose HP for you and the monster.", "100");
 
+  //parse entered value make sure its not a number
   const parsedValue = parseInt(enteredValue);
   if (Number.isNaN(parsedValue) || parsedValue <= 0) {
     throw { message: "Invalid user input, not a number!" };
@@ -26,6 +28,7 @@ const getMaxLifeValues = () => {
 
 let chosenMaxLife;
 
+//check for errors in user input
 try {
   chosenMaxLife = getMaxLifeValues();
 } catch (error) {
@@ -41,6 +44,7 @@ let hasBonusLife = true;
 
 adjustHealthBars(chosenMaxLife);
 
+//render values to the screen
 const writeToLog = (ev, val, monsterHealth, playerHealth) => {
   let logEntry = {
     event: ev,
@@ -67,12 +71,14 @@ const writeToLog = (ev, val, monsterHealth, playerHealth) => {
   battleLog.push(logEntry);
 };
 
+//reset health bars and game
 const reset = () => {
   currentMonsterHealth = chosenMaxLife;
   currentPlayerHealth = chosenMaxLife;
   resetGame(chosenMaxLife);
 };
 
+//end the round
 const endRound = () => {
   const initialPlayerHealth = currentPlayerHealth;
   const playerDamage = dealPlayerDamage(MONSTER_ATTACK_VALUE);
@@ -122,7 +128,7 @@ const endRound = () => {
     reset();
   }
 };
-
+// set up monster attack
 const attackMonster = (mode) => {
   const maxDamage = mode === MODE_ATTACK ? ATTACK_VALUE : STRONG_ATTACK_VALUE;
 
@@ -163,7 +169,7 @@ const healPlayerHandler = () => {
   );
   endRound();
 };
-
+//print to console function
 const printLogHandler = () => {
   let i = 0;
   for (const logEntry of battleLog) {
