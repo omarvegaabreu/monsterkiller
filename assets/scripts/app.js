@@ -23,7 +23,7 @@ let lastLoggedEntry;
 try {
   //check if chosenMaxLife is a number
   if (enteredValue === null) {
-    alert("GAME CANCELED. Thank you for viewing the app. - Omar Vega");
+    alert("GAME CANCELED. Thank you for viewing the app. -Omar Vega");
   } else if (Number.isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
     chosenMaxLife = 100;
   }
