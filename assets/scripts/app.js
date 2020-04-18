@@ -11,7 +11,7 @@ const LOG_EVENT_PLAYER_STRONG_ATTACK = "PLAYER_STRONG_ATTACK";
 const LOG_EVENT_MONSTER_ATTACK = "MONSTER_ATTACK";
 const LOG_EVENT_PLAYER_HEAL = "PLAYER_HEAL";
 const LOG_EVENT_GAME_OVER = "GAME_OVER";
-const enteredValue = prompt("Choose your HP", "0 - ∞");
+const enteredValue = prompt("Choose Your HP", "Type a number");
 //variables
 let battleLog = []; //array to push log event values
 let chosenMaxLife = parseInt(enteredValue);
@@ -20,20 +20,17 @@ let currentPlayerHealth = chosenMaxLife;
 let hasBonusLife = true;
 let lastLoggedEntry;
 
-if (enteredValue === null) {
-  alert(`APPLICATION CANCELED: If you want to test the app, refresh the page and enter your HP choice or simply hit ok. Thank you for viewing - Omar Vega"
-  `);
-}
-
 try {
   //check if chosenMaxLife is a number
-  if (Number.isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
+  if (enteredValue === null) {
+    alert("GAME CANCELED. Thank you for viewing the app. - Omar Vega");
+  } else if (Number.isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
     chosenMaxLife = 100;
   }
   adjustHealthBars(chosenMaxLife);
 } catch (error) {
   chosenMaxLife = 100;
-  alert("Invalid user input");
+  alert("Refresh the page to play.");
 }
 
 function writeToLog(event, value, monsterHealth, playerHealth) {
